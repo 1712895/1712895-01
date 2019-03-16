@@ -1,0 +1,7 @@
+﻿  Source.cpp
+d:\khmt_doan1\khmt_doan1\source.cpp(227): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+d:\khmt_doan1\khmt_doan1\source.cpp(271): warning C4018: '<': signed/unsigned mismatch
+d:\khmt_doan1\khmt_doan1\source.cpp(269): warning C4101: 'chiSo': unreferenced local variable
+d:\khmt_doan1\khmt_doan1\source.cpp(293): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  KHMT_DoAn1.vcxproj -> D:\KHMT_DoAn1\Debug\KHMT_DoAn1.exe
+  KHMT_DoAn1.vcxproj -> D:\KHMT_DoAn1\Debug\KHMT_DoAn1.pdb (Full PDB)
