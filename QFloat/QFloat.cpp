@@ -14,6 +14,10 @@ char numToString(int n)     // chuyen so sang char
 {
 	return (char)(n + 48);
 }
+int stringToNum(char c)     // chuyen char sang so
+{
+	return c - '0';//theo ma ASCII
+}
 string layPhanNguyen(string struser)
 {
 	int chiSo;
@@ -104,8 +108,8 @@ string xuLiSoNguyen(string userStr)
 //xu li so thap phan : B2
 float layPhanThapPhan(string struser)
 {
-	/*if(struser[0]=='-')
-	return stod(struser) + (float) stoi(layPhanNguyen(struser));*/
+	if (struser[0] == '-') struser.erase(0, 1);
+	
 	return stod(struser) - (float)stoi(layPhanNguyen(struser));
 }
 double _2_mu_n(int n)
@@ -124,6 +128,24 @@ int* reverse112(int *a)
 	for (int i = 0; i < 112; i++)
 	{
 		rev_arr[i] = a[112 - i - 1];
+	}
+	return rev_arr;
+}
+int* copy112(int *a)
+{
+	static int rev_arr[112] = { 0 };
+	for (int i = 0; i < 112; i++)
+	{
+		rev_arr[i] = a[i];
+	}
+	return rev_arr;
+}
+int* copy128(int *a)
+{
+	static int rev_arr[128] = { 0 };
+	for (int i = 0; i < 112; i++)
+	{
+		rev_arr[i] = a[i];
 	}
 	return rev_arr;
 }
@@ -193,16 +215,72 @@ int* timSoMu(string struser)
 	phanMu = soMu + 127;
 	string phanMuStr;
 	phanMuStr = intToString(phanMu);
-	return DecToBinNguyen(phanMuStr);
+	int *res = DecToBinNguyen(phanMuStr);
+	return res;
 	
 }
 int* phanSignificand(string struser)
 {
+	int phan3[112] = { 0 };
 	string nhiPhan;
 	nhiPhan = soNhiPhanHoanChinh(struser);
-    int 
+	int viTriDauCham = nhiPhan.find_first_of('.');
+	nhiPhan.erase(viTriDauCham, 1);
+	int vitri;
+	vitri = nhiPhan.find_first_of('1') + 1;
+
+	for (int i = 0; i < 112; i++)
+	{
+		phan3[i]= stringToNum(nhiPhan[i + vitri]);
+		/*cout << phan3[i];*/
+	}
+	cout << endl;
+	int *res = copy112(phan3);
+	return res;
+}
+int* nhiPhanIEE(string struser)
+{
+	int mangIEE[128] = { 0 };
+	if (struser[0] = '-')
+	{
+		mangIEE[0] = 1;
+	}
+	else
+	{
+		mangIEE[0] = 0;
+	}
+	int* soMu = timSoMu(struser);
+	
+	for (int i = 1; i < 16; i++)
+	{
+		mangIEE[i]= soMu[i-1];
+	}
+	cout << endl;
+	
+	
+	
+
+	/*for (int i = 1; i < 16; i++)
+	{
+		mangIEE[i] = soMu[i-1];
+		
+	
+	}*/
+	int* soCuoi = phanSignificand(struser);
+	for (int i = 16; i < 128; i++)
+	{
+		mangIEE[i] = soCuoi[i - 16];
+		
+	}
+	int *res = copy128(mangIEE);
+	return res;
 }
 void main()
 {
-	
+	string thu = "-3.56125";
+	int *res = nhiPhanIEE(thu);
+	for (int i = 0; i < 128; i++)
+	{
+		cout << res[i];
+	}
 }
