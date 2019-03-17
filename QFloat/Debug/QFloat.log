@@ -1,0 +1,6 @@
+﻿  QFloat.cpp
+d:\khmt_doan1\qfloat\qfloat.cpp(21): warning C4018: '<': signed/unsigned mismatch
+d:\khmt_doan1\qfloat\qfloat.cpp(19): warning C4101: 'chiSo': unreferenced local variable
+d:\khmt_doan1\qfloat\qfloat.cpp(109): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  QFloat.vcxproj -> D:\KHMT_DoAn1\Debug\QFloat.exe
+  QFloat.vcxproj -> D:\KHMT_DoAn1\Debug\QFloat.pdb (Full PDB)
